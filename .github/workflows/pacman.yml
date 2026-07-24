@@ -1,0 +1,19 @@
+name: Generate Pacman Contribution Graph
+
+on:
+  # Roda automaticamente a cada 12 horas
+  schedule:
+    - cron: "0 */12 * * *"
+  
+  # Permite rodar manualmente a qualquer momento pela aba Actions
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: maurodesouza/github-readme-pacman@master
+        with:
+          github_user_name: ${{ github.repository_owner }}
